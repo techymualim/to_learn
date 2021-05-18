@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Home_chef{
      static String meal_ofd; //static all of these because meal and sweet dishes and their prices will be same for all customers
      static String sweetdish_ofd;
@@ -26,9 +27,70 @@ public class Home_chef{
         this.price_sd=price_sd;
 
     }
+    public void Menu_viewer(){
+        System.out.println("Meal of the day and its price :" + meal_ofd +" "+price_md +"\nSweet of the day and its price:" + sweetdish_ofd+" "+price_sd);
+    }
     public static void main(String args[]) {
         Home_chef m1=new Home_chef("Biryani","Kheer",100,50);
         
+        m1.Menu_viewer();
     }
 }
 
+public class customer_order extends Home_chef{
+    private String name;
+   private String address;
+   private int phone;
+   private String mode_pay;
+   private String meal;
+   private int total_price;
+   private int Quantity;
+   Scanner myObj = new Scanner(System.in); 
+
+   public void placeOrder(){
+    System.out.println("Enter Name:");
+    this.name=myObj.nextLine();
+    System.out.println("Enter Address:");
+    this.address=myObj.nextLine();
+    System.out.println("Enter phone:");
+    this.phone=myObj.nextInt();
+    System.out.println("Enter Mode Of pay(card or cash on delivery):");
+    this.mode_pay=myObj.nextLine();
+    System.out.println("Select Meal or Sweet");
+    this.meal=myObj.nextLine();
+    System.out.println("Quantity");
+    Quantity=myObj.nextInt();
+    if(meal =="Meal"){
+        this.total_price=price.md*Quantity;
+
+    }else if(meal="Sweet"){
+        this.total_price=price.sd*Quantity;
+    }
+
+   }
+   public void updateOrder(){
+    System.out.println("Enter Name:");
+    this.name=myObj.nextLine();
+    System.out.println("Enter Address:");
+    this.address=myObj.nextLine();
+    System.out.println("Enter phone:");
+    this.phone=myObj.nextInt();
+    System.out.println("Enter Mode Of pay(card or cash on delivery):");
+    this.mode_pay=myObj.nextLine();
+    System.out.println("Select Meal or Sweet");
+    this.meal=myObj.nextLine();
+    System.out.println("Quantity");
+    Quantity=myObj.nextInt();
+    if(meal =="Meal"){
+        this.total_price=price.md*Quantity;
+
+    }else if(meal="Sweet"){
+        this.total_price=price.sd*Quantity;
+    }
+   }
+   public void viewOrder(){
+       System.out.println("Order of "+ this.name+ " Is"+this.meal+"\nTotal Amount is:"+this.total_price);
+
+   }
+   
+}
